@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001.create-initial-schema
+      author: enrico
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            tableExists:
+              tableName: patient
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_patient
+                  name: patient_id
+                  type: UUID
+              - column:
+                  constraints:
+                    nullable: false
+                  name: first_name
+                  type: NVARCHAR(250)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: last_name
+                  type: NVARCHAR(250)
+            tableName: patient
