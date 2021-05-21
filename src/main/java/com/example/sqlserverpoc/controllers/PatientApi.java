@@ -5,9 +5,12 @@ import com.example.sqlserverpoc.repositories.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
 import java.util.List;
 import java.util.UUID;
+
+import static org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder.on;
 
 @RestController
 public class PatientApi
@@ -46,7 +49,14 @@ public class PatientApi
     @PostMapping("/patients")
     public ResponseEntity<Void> postPatient(@RequestBody Patient patient)
     {
-        patientRepository.saveAndFlush(patient);
-        return ResponseEntity.ok().build();
+        patientRepository.save(patient);
+
+        return ResponseEntity
+                .created(
+                        MvcUriComponentsBuilder
+                                .fromMethodCall(on(PatientApi.class).getPatient(patient.getPatientId().toString()))
+                                .build()
+                                .toUri())
+                .build();
     }
 }
