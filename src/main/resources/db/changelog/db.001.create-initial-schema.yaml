@@ -15,7 +15,7 @@ databaseChangeLog:
                     nullable: false
                     primaryKey: true
                     primaryKeyName: pk_patient
-                  name: patient_id
+                  name: unique_id
                   type: UUID
               - column:
                   constraints:

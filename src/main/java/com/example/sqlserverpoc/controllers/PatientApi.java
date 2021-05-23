@@ -54,7 +54,7 @@ public class PatientApi
         return ResponseEntity
                 .created(
                         MvcUriComponentsBuilder
-                                .fromMethodCall(on(PatientApi.class).getPatient(patient.getPatientId().toString()))
+                                .fromMethodCall(on(PatientApi.class).getPatient(patient.getUniqueId().toString()))
                                 .build()
                                 .toUri())
                 .build();
