@@ -1,0 +1,29 @@
+[
+  {
+    "name": "liquibase.logging.core.LogServiceFactory",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "liquibase.configuration.GlobalConfiguration",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "liquibase.configuration.HubConfiguration",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  }
+]
