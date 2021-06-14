@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  demo:
+    image: spring-boot-sql-server-poc:0.0.1-SNAPSHOT
+    depends_on: docker
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:sqlserver://database;databaseName=fremap
+    depends_on: 
+      - database
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1GB
+  database:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    ports: 
+      - "1433:1433"
+    environment: 
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=yourStrong(!)Password
